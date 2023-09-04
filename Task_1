@@ -1,0 +1,52 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <windows.h>
+
+using namespace std;
+ 
+ int main()
+ {  
+    srand(time(0));
+    int Random_Number = 1 + rand() % (200); /*the range of the random number to be generated is from 1:200*/
+    bool Guess_Flag = false;
+    int Guessing_Attempts = 5; /*five trials are only allowed*/
+    int Attempts_Counter = 0;
+    int Max_Attempts = 5;
+    int Guess = 0;
+    cout<<"Hi it's Hannah. Welcome to our astounding guessing game!!\n";
+    cout<<"I've picked a number somewhere in the range of 1 and 200, you have "<<Guessing_Attempts<<" attempts to figure the number right.\n";
+    std::cout<<"Starting in 3";
+    Sleep(2000);
+    std::cout<<" 2";
+    Sleep(2000);
+    std::cout<<" 1\n";
+    cout<<"GO!\n";
+    while((!Guess_Flag) && (Attempts_Counter < Max_Attempts))
+    {   cout<<"Enter your guess: ";
+        cin>>Guess;
+        ++Attempts_Counter;
+        if((Guess) == (Random_Number))
+        {
+            Guess_Flag = true;
+        }
+        else if((Guess) > (Random_Number))
+        {
+            cout<<"Your guess is too high, try again\n";
+        }
+        else
+        { 
+           cout<<"Your guess is too low, try again\n";
+        }
+    }
+    if(Guess_Flag == true)
+    {
+        cout<<"WOHOO! You guessed it right after "<<Attempts_Counter<<" attempts!\n";
+    }  
+    else
+    {
+        cout<<"Better luck next time :)\n";
+    }
+
+    return 0;
+ }
